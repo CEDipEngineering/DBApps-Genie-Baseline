@@ -2,14 +2,7 @@
 
 > **Note**: This code is based on the excellent work by [Vivian Xie](https://github.com/vivian-xie-db) and the original [genie_space repository](https://github.com/vivian-xie-db/genie_space/tree/main). We extend our gratitude to Vivian for creating this foundational implementation that demonstrates Databricks Genie API integration.
 
-![](./assets/genie_room0.png)
-![](./assets/genie-space.png)
-![](./assets/genie-space4.png)
-
 This repository demonstrates how to integrate Databricks' AI/BI Genie Conversation APIs into custom Databricks Apps applications, allowing users to interact with their structured data using natural language.
-
-
-
 
 ## Overview
 
@@ -50,8 +43,6 @@ This demo shows how to create an interactive interface that connects to the Geni
 ```bash
 git clone https://github.com/vivian-xie-db/genie_space.git
 ```
-![](./assets/genie-space1.png)
-
 
 2. Update the environment variables in the app.yaml file in the root directory:
 
@@ -64,43 +55,22 @@ env:
 - name: "SPACE_ID"
   value: "your_space_id_here"
 ```
-![](./assets/genie-space7.png)
-![](./assets/genie-space8.png)
 
 3. Create an app in the Databricks apps interface and then deploy the path to the code
 
-![](./assets/genie-space2.png)
-
 4. Grant the service principal can_run permission to the genie space.
-![](./assets/genie-space9.png)
 
 5. Grant the service principal permission can_use to the SQL warehouse that powers genie
-
-![](./assets/genie-space5.png)
-
-
-![](./assets/genie-space6.png)
 
 6. Grant the service principal appropriate privileges to the underlying resources such as catalog, schema and tables.
 
    **Note**: For demo purposes, ALL PRIVILEGES are used, but you can be more restrictive with `USE CATALOG` on catalog, `USE SCHEMA` on schema, and `SELECT` on tables for production environments.
 
-![](./assets/table1.png)
-
-![](./assets/table2.png)
-
-![](./assets/table3.png)
-
 7. Troubleshooting issues:
    
    For troubleshooting, navigate to the Genie space monitoring page and check if the query has been sent successfully to the Genie space via the API. 
 
-![](./assets/troubleshooting1.png)
-
    Click open the query and check if there is any error or any permission issues.
-
-![](./assets/troubleshooting2.png)
-
 
 ## Resources
 
