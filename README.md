@@ -60,6 +60,7 @@ This demo shows how to create an interactive interface that connects to the Geni
 ### Deploy to Databricks Apps
 
 1. **Create the app** (first time only):
+   This may take a few minutes, we're creating and starting some compute to be used by the app's frontend.
    ```bash
    databricks apps create genie-chat-ui --description "Genie Chat Interface"
    ```
@@ -76,6 +77,7 @@ This demo shows how to create an interactive interface that connects to the Geni
    ```
 
 3. **Deploy the app**:
+   Remember to edit the path here to match where you synced your code to.
    ```bash
    databricks apps deploy genie-chat-ui --source-code-path /Workspace/Users/carlos.dip@databricks.com/Genie_DBApps_Baseline
    ```
