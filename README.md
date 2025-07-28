@@ -36,41 +36,73 @@ This demo shows how to create an interactive interface that connects to the Geni
 4. Navigate between different conversations using the sidebar
 5. Provide feedback on response quality
 
-## Deploying to Databricks apps
+## Deploying to Databricks Apps
 
-1. Clone the repository to workspace directory such as 
-/Workspace/Users/wenwen.xie@databricks.com/genie_space
-```bash
-git clone https://github.com/vivian-xie-db/genie_space.git
-```
+### Prerequisites
+- Set up your Python environment and the [Databricks CLI](https://docs.databricks.com/dev-tools/cli/index.html)
+- Ensure you have access to a Databricks workspace with Genie Spaces enabled
 
-2. Update the environment variables in the app.yaml file in the root directory:
+### Local Development Setup
 
-```yaml
-command:
-- "python"
-- "app.py"
+1. **Edit in your IDE**
+   - Set up your Python environment and the Databricks CLI
 
-env:
-- name: "SPACE_ID"
-  value: "your_space_id_here"
-```
+2. **Sync the files**
+   - Copy the template to your computer (skip this step if not using a template):
+   ```bash
+   databricks workspace export-dir /Workspace/Users/your-username@databricks.com/your-app-path .
+   ```
 
-3. Create an app in the Databricks apps interface and then deploy the path to the code
+3. **Sync future edits back to Databricks**
+   ```bash
+   databricks sync --watch . /Workspace/Users/your-username@databricks.com/your-app-path
+   ```
 
-4. Grant the service principal can_run permission to the genie space.
+4. **Run the app on your computer**
+   - Start the app:
+   ```bash
+   python app.py
+   ```
+   - And open the URL on the screen
 
-5. Grant the service principal permission can_use to the SQL warehouse that powers genie
+### Deploy to Databricks Apps
 
-6. Grant the service principal appropriate privileges to the underlying resources such as catalog, schema and tables.
+1. **Update the environment variables** in the app.yaml file:
+   ```yaml
+   command:
+   - "python"
+   - "app.py"
+
+   env:
+   - name: "SPACE_ID"
+     value: "your_space_id_here"
+   ```
+
+2. **Deploy the app**:
+   ```bash
+   databricks apps deploy your-app-name --source-code-path /Workspace/Users/your-username@databricks.com/your-app-path
+   ```
+   You can leave out the full path for subsequent deploys.
+
+3. **Configure permissions**:
+   - Grant the service principal `can_run` permission to the Genie space
+   - Grant the service principal `can_use` permission to the SQL warehouse that powers Genie
+   - Grant the service principal appropriate privileges to the underlying resources (catalog, schema, tables)
 
    **Note**: For demo purposes, ALL PRIVILEGES are used, but you can be more restrictive with `USE CATALOG` on catalog, `USE SCHEMA` on schema, and `SELECT` on tables for production environments.
 
-7. Troubleshooting issues:
-   
-   For troubleshooting, navigate to the Genie space monitoring page and check if the query has been sent successfully to the Genie space via the API. 
+4. **Open your app in the browser**. If it doesn't work, check out the logs.
 
-   Click open the query and check if there is any error or any permission issues.
+### Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| Missing package or wrong package version | Add to requirements.txt |
+| Permissions issue | Give access `app-{app-id}` to the resource |
+| Missing environment variable | Add to the env section of app.yaml |
+| Running the wrong command line at startup | Add to the command section of app.yaml |
+
+For additional troubleshooting, navigate to the Genie space monitoring page and check if the query has been sent successfully to the Genie space via the API. Click open the query and check if there is any error or any permission issues.
 
 ## Resources
 
