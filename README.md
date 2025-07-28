@@ -59,7 +59,12 @@ This demo shows how to create an interactive interface that connects to the Geni
 
 ### Deploy to Databricks Apps
 
-1. **Update the environment variables** in the app.yaml file:
+1. **Create the app** (first time only):
+   ```bash
+   databricks apps create genie-chat-app --description "Genie Chat Interface" --no-compute
+   ```
+
+2. **Update the environment variables** in the app.yaml file:
    ```yaml
    command:
    - "python"
@@ -70,9 +75,9 @@ This demo shows how to create an interactive interface that connects to the Geni
      value: "your_space_id_here"
    ```
 
-2. **Deploy the app**:
+3. **Deploy the app**:
    ```bash
-   databricks apps deploy your-app-name --source-code-path /Workspace/Users/your-username@databricks.com/your-app-path
+   databricks apps deploy genie-chat-app --source-code-path /Workspace/Users/your-username@databricks.com/your-app-path
    ```
    You can leave out the full path for subsequent deploys.
 
