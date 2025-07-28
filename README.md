@@ -58,13 +58,6 @@ This demo shows how to create an interactive interface that connects to the Geni
    databricks sync --watch . /Workspace/Users/your-username@databricks.com/your-app-path
    ```
 
-4. **Run the app on your computer**
-   - Start the app:
-   ```bash
-   python app.py
-   ```
-   - And open the URL on the screen
-
 ### Deploy to Databricks Apps
 
 1. **Update the environment variables** in the app.yaml file:
