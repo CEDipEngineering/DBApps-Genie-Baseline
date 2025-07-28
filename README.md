@@ -47,15 +47,14 @@ This demo shows how to create an interactive interface that connects to the Geni
 1. **Edit in your IDE**
    - Set up your Python environment and the Databricks CLI
 
-2. **Sync the files**
-   - Copy the template to your computer (skip this step if not using a template):
+2. **Clone this repo locally**
    ```bash
-   databricks workspace export-dir /Workspace/Users/your-username@databricks.com/your-app-path .
+   git clone git@github.com:CEDipEngineering/Genie_DBApps_Baseline.git
    ```
-
 3. **Sync future edits back to Databricks**
+   Rememer to edit this path to match your context. I suggests starting with your personal Workspace folder for development, but saving it to a non-personal folder in production.
    ```bash
-   databricks sync --watch . /Workspace/Users/your-username@databricks.com/your-app-path
+   databricks sync --watch . /Workspace/Users/carlos.dip@databricks.com/Genie_DBApps_Baseline
    ```
 
 ### Deploy to Databricks Apps
