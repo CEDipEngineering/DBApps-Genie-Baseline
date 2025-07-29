@@ -49,7 +49,7 @@ This demo shows how to create an interactive interface that connects to the Geni
 
 2. **Clone this repo locally**
    ```bash
-   git clone git@github.com:CEDipEngineering/Genie_DBApps_Baseline.git
+   git clone git@github.com:CEDipEngineering/DBApps-Genie-Baseline.git
    ```
 3. **Sync future edits back to Databricks**
    Rememer to edit this path to match your context. I suggests starting with your personal Workspace folder for development, but saving it to a non-personal folder in production.
